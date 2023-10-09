@@ -44,6 +44,9 @@ function genesysmod_equ(model,Sets,Subsets,Params,Emp_Sets,Settings,Switch)
     JuMP.fix(model[:RegionalBaseYearProduction_neg][y,r,t,f], 0;force=true)
   end end end end
 
+
+
+  print("Hello world")
   @objective(model, MOI.MIN_SENSE, sum(model[:TotalDiscountedCost][y,r] for y ∈ 𝓨 for r ∈ 𝓡)
   + sum(model[:DiscountedAnnualTotalTradeCosts][y,r] for y ∈ 𝓨 for r ∈ 𝓡)
   + sum(model[:DiscountedNewTradeCapacityCosts][y,f,r,rr] for y ∈ 𝓨 for f ∈ 𝓕 for r ∈ 𝓡 for rr ∈ 𝓡)
