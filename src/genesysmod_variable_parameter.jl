@@ -43,6 +43,9 @@ function genesysmod_variable_parameter(model, Sets, Params)
       LoopSetInput[(r,f,y)] = [(x[1],x[2]) for x in keys(Params.InputActivityRatio[r,:,f,:,y]) if Params.InputActivityRatio[r,x[1],f,x[2],y] > 0]
     end end end
 
+    compute_conflict!(model)
+    print_iis(model)
+
     for y ∈ Sets.Year for r ∈ Sets.Region_full
         for l ∈ Sets.Timeslice
             for t ∈ Sets.Technology
